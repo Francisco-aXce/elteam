@@ -1,0 +1,17 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+// TODO: Apply themes to components used in the app
+@mixin theming($theme) {
+  @include mat.all-component-themes($theme);
+  // @include mat.core-theme($theme);
+  // @include mat.button-theme($theme);
+  // @include mat.form-field-theme($theme);
+  // @include mat.input-theme($theme);
+  // @include mat.checkbox-theme($theme);
+  // @if $typography {
+  //   @include angular-material-typography($typography);
+  // }
+  /* include mixin from component, if desired*/
+}
