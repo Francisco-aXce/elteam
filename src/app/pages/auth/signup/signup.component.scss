@@ -1,0 +1,22 @@
+@import "./src/stylesheets/general/responsive.mixins.scss";
+
+.reactive-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.d-block {
+  display: block;
+}
+
+@include screen(xSmall) {
+  .reactive-flex {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .col-xs-6 {
+      width: 50%;
+    }
+  }
+}

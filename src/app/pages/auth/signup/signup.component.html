@@ -1,0 +1,84 @@
+<mat-card>
+  <mat-card-content>
+    <form>
+      <h1>Welcome</h1>
+
+      <!-- Full name -->
+      <div class="reactive-flex">
+        <mat-form-field class="col-xs-6" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input type="text" matInput [formControl]="firstName!" placeholder="Ex. Francisco">
+          <mat-error *ngIf="firstName?.hasError('required')">
+            First name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-xs-6" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input type="text" matInput [formControl]="lastName!" placeholder="Ex. Ramos">
+          <mat-error *ngIf="lastName?.hasError('required')">
+            Last name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Country -->
+      <mat-form-field class="d-block" appearance="outline">
+        <mat-label>Country</mat-label>
+        <input matInput [formControl]="country" [matAutocomplete]="autoCountry" aria-label="Country">
+        <mat-error *ngIf="country?.invalid && !country?.hasError('required')">
+          Please select a valid country
+        </mat-error>
+        <mat-error *ngIf="country?.hasError('required')">
+          Country is <strong>required</strong>
+        </mat-error>
+        <mat-autocomplete #autoCountry="matAutocomplete">
+          <mat-option *ngFor="let country of filteredCountries | async" [value]="country.value+'-'+country.name">
+            <span>{{country.value | uppercase}} - {{country.name}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field class="d-block" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="email!" placeholder="Ex. fran@example.com">
+        <mat-error *ngIf="email?.hasError('email') && !email?.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="email?.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password -->
+      <div class="reactive-flex">
+        <mat-form-field class="col-xs-6" appearance="outline">
+          <mat-label>Choose a password</mat-label>
+          <input matInput [formControl]="password" [type]="hidePassword ? 'password' : 'text'">
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="col-xs-6" appearance="outline">
+          <mat-label>Confirm your password</mat-label>
+          <input matInput [formControl]="passwordConfirm" [type]="hidePassword ? 'password' : 'text'">
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div class="reactive-flex">
+        <button mat-raised-button color="primary">Sign Up</button>
+        <a mat-button color="accent" [routerLink]="['../', 'login']">
+          Already have an account?
+        </a>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

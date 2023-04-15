@@ -1,8 +1,9 @@
-.example-button-row button,
-.example-button-row a {
-  margin-right: 8px;
-}
-
-.example-disabled {
-  display: inline-block;
+section {
+  &.cta {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
