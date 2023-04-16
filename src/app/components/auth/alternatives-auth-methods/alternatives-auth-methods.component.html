@@ -1,0 +1,6 @@
+<section>
+  <button type="button" *ngFor="let method of methods" mat-raised-button color="primary">
+    <fa-icon class="mr-2" [icon]="method.icon"></fa-icon>
+    <span>Continue with {{method.name}}</span>
+  </button>
+</section>

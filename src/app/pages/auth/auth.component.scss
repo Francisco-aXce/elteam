@@ -1,9 +1,17 @@
+@import "./src/stylesheets/general/responsive.mixins.scss";
+
 section {
   &.cta {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: stretch;
+  }
+}
+
+@include screen(xSmall) {
+  section.cta {
     align-items: center;
   }
 }

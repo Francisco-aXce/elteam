@@ -1,9 +1,9 @@
 @import "./src/stylesheets/general/responsive.mixins.scss";
 
-.reactive-flex {
+.action-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .d-block {
@@ -24,14 +24,6 @@
   .container {
     &.main {
       width: 456px;
-    }
-  }
-  .reactive-flex {
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    .col-xs-6 {
-      width: 50%;
     }
   }
 }
