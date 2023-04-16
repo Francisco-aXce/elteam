@@ -1,0 +1,53 @@
+<mat-expansion-panel expanded="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <fa-icon class="mr-2" [icon]="peopleGroup" size="lg"></fa-icon>
+      <h3>Teams</h3>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <!-- Content -->
+  <section style="overflow: auto;">
+    <table mat-table [dataSource]="dataSourceTeams" matSort>
+
+      <!-- Team Column -->
+      <ng-container matColumnDef="team">
+        <th mat-header-cell *matHeaderCellDef> Team </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="team-overview">
+            <div class="logo mr-2">
+              <img [src]="row.logo" alt="Team logo">
+            </div>
+            <div class="desc">
+              <div class="name">
+                <h4 class="my-0 mr-1"><b>{{row.name}}</b></h4>
+                <h5 class="my-0" style="font-weight: 500;">{{row.nameShort}}</h5>
+              </div>
+              <p class="text-truncate my-0">{{row.games}}</p>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Country Column -->
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
+        <td mat-cell *matCellDef="let row"> {{row.country}} </td>
+      </ng-container>
+
+      <!-- Tournaments Column -->
+      <ng-container matColumnDef="tournaments">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tournaments </th>
+        <td mat-cell *matCellDef="let row"> {{row.tournaments}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsTeams"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsTeams;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "xd"</td>
+      </tr>
+    </table>
+  </section>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</mat-expansion-panel>

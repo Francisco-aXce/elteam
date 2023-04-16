@@ -5,6 +5,12 @@
   text-decoration: none;
 }
 
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .container-responsive {
   padding: 0 8px;
 
