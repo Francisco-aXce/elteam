@@ -2,15 +2,15 @@
 
 section {
   &.cta {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
+    min-height: 100vh;
   }
 }
 
-@include screen(xSmall) {
+@include screen(xs) {
   section.cta {
     align-items: center;
   }

@@ -1,26 +1,6 @@
 @import "./src/stylesheets/general/responsive.mixins.scss";
 
-.action-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.d-block {
-  display: block;
-}
-
-.alt-methods-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.text-center {
-  text-align: center;
-}
-
-@include screen(xSmall) {
+@include screen(xs) {
   .container {
     &.main {
       width: 456px;

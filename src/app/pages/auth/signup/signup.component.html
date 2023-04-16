@@ -5,7 +5,7 @@
         <h1 class="text-center">Welcome</h1>
 
         <!-- Full name -->
-        <div class="reactive-flex">
+        <div class="d-flex flex-dir-col flex-dir-xs-row justify-content-center flex-xs-wrap">
           <mat-form-field class="col-xs-6" appearance="outline">
             <mat-label>First Name</mat-label>
             <input type="text" matInput formControlName="firstName" placeholder="Ex. Francisco">
@@ -24,37 +24,39 @@
         </div>
 
         <!-- Country -->
-        <mat-form-field class="d-block" appearance="outline">
-          <mat-label>Country</mat-label>
-          <input matInput formControlName="country" [matAutocomplete]="autoCountry" aria-label="Country">
-          <mat-error *ngIf="country?.invalid && !country?.hasError('required')">
-            Please select a valid country
-          </mat-error>
-          <mat-error *ngIf="country?.hasError('required')">
-            Country is <strong>required</strong>
-          </mat-error>
-          <mat-autocomplete #autoCountry="matAutocomplete">
-            <mat-option *ngFor="let country of filteredCountries | async" [value]="country.value+'-'+country.name">
-              <span>{{country.value | uppercase}} - {{country.name}}</span>
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
+        <div class="d-flex flex-dir-col">
+          <mat-form-field appearance="outline">
+            <mat-label>Country</mat-label>
+            <input matInput formControlName="country" [matAutocomplete]="autoCountry" aria-label="Country">
+            <mat-error *ngIf="country?.invalid && !country?.hasError('required')">
+              Please select a valid country
+            </mat-error>
+            <mat-error *ngIf="country?.hasError('required')">
+              Country is <strong>required</strong>
+            </mat-error>
+            <mat-autocomplete #autoCountry="matAutocomplete">
+              <mat-option *ngFor="let country of filteredCountries | async" [value]="country.value+'-'+country.name">
+                <span>{{country.value | uppercase}} - {{country.name}}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
 
-        <!-- Email -->
-        <mat-form-field class="d-block" appearance="outline">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput formControlName="email" placeholder="Ex. fran@example.com">
-          <mat-error *ngIf="email?.hasError('email') && !email?.hasError('required')">
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="email?.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
+          <!-- Email -->
+          <mat-form-field class="" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="Ex. fran@example.com">
+            <mat-error *ngIf="email?.hasError('email') && !email?.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="email?.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
 
         <!-- Password -->
-        <div formGroupName="passwords">
-          <mat-form-field class="d-block" appearance="outline">
+        <div class="d-flex flex-dir-col" formGroupName="passwords">
+          <mat-form-field appearance="outline">
             <mat-label>Choose a password</mat-label>
             <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
             <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
@@ -69,7 +71,7 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field class="d-block" appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>Confirm your password</mat-label>
             <input matInput formControlName="passwordConfirm" [type]="hidePasswordConfirm ? 'password' : 'text'">
             <button mat-icon-button matSuffix type="button" (click)="hidePasswordConfirm = !hidePasswordConfirm"
@@ -89,7 +91,7 @@
           </mat-form-field>
         </div>
 
-        <div class="reactive-flex">
+        <div class="d-flex flex-dir-col flex-dir-xs-row justify-content-center flex-xs-wrap">
           <button mat-raised-button color="primary">Sign Up</button>
           <a mat-button color="accent" [routerLink]="['../', 'login']">
             Already have an account?
@@ -99,7 +101,7 @@
 
       <h4 class="text-center">or</h4>
 
-      <div class="alt-methods-container">
+      <div class="d-flex flex-dir-col align-items-center">
         <app-alternatives-auth-methods></app-alternatives-auth-methods>
       </div>
 

@@ -1,0 +1,95 @@
+@import "./variables.scss";
+@import "./responsive.mixins.scss";
+
+$classes: (
+  "d": (
+    "prop": display,
+    "values": (
+      "none": none,
+      "flex": flex,
+      "block": block,
+    ),
+  ),
+  "flex-dir": (
+    "prop": flex-direction,
+    "values": (
+      "row": row,
+      "row-r": row-reverse,
+      "col": column,
+      "col-r": column-reverse,
+    ),
+  ),
+  "justify-content": (
+    "prop": justify-content,
+    "values": (
+      "start": flex-start,
+      "end": flex-end,
+      "center": center,
+      "between": space-between,
+      "around": space-around,
+    ),
+  ),
+  "align-items": (
+    "prop": align-items,
+    "values": (
+      "start": flex-start,
+      "end": flex-end,
+      "center": center,
+      "baseline": baseline,
+      "stretch": stretch,
+    ),
+  ),
+  "flex": (
+    "prop": flex-wrap,
+    "values": (
+      "wrap": wrap,
+      "wrap-r": wrap-reverse,
+      "no-wrap": nowrap,
+    ),
+  ),
+  "text": (
+    "prop": text-align,
+    "values": (
+      "left": left,
+      "right": right,
+      "center": center,
+      "justify": justify,
+    ),
+  ),
+);
+
+@each $class, $configs in $classes {
+  $prop: map-get($configs, "prop");
+  $values: map-get($configs, "values");
+  @each $key, $value in $values {
+    // Breakpoints
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include screen($breakpoint) {
+        .#{$class}-#{$breakpoint}-#{$key} {
+          #{$prop}: $value !important;
+        }
+      }
+    }
+
+    // No breakpoints
+    .#{$class}-#{$key} {
+      #{$prop}: $value;
+    }
+  }
+}
+
+$cols: 12;
+
+@for $i from 1 through $cols {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include screen($breakpoint) {
+      .col-#{$breakpoint}-#{$i} {
+        width: calc(100% / $cols * $i) !important;
+      }
+    }
+  }
+
+  .col-#{$i} {
+    width: calc(100% / $cols * $i);
+  }
+}
