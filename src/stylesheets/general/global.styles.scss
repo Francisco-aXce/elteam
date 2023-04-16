@@ -1,0 +1,26 @@
+@import "./responsive.mixins.scss";
+
+.brand-name {
+  color: white;
+  text-decoration: none;
+}
+
+.container-responsive {
+  padding: 0 8px;
+
+  @include screen(xs) {
+    padding: 0 24px;
+  }
+
+  @include screen(sm) {
+    padding: 0 40px;
+  }
+
+  @include screen(md) {
+    padding: 0 56px;
+  }
+
+  @include screen(lg) {
+    padding: 0 72px;
+  }
+}

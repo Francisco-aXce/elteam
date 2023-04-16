@@ -1,6 +1,8 @@
 // TODO: Add multiple themes using a service
 @import "./stylesheets/themes/ligth-theme";
 
+@import "./stylesheets/general/global.styles.scss";
+
 html {
   height: 100%;
 }

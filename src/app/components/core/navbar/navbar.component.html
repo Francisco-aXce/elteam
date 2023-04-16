@@ -1,5 +1,5 @@
 <mat-toolbar class="main-toolbar mat-elevation-z4 justify-content-between" color="primary">
-  <span>ElTeam</span>
+  <a class="brand-name" [routerLink]="['/']">ElTeam</a>
   <ng-container *ngIf="true; else Login">
     <div>
       <button mat-icon-button matTooltip="Search" aria-label="Search teams, players or games" (click)="toggleSearch()">

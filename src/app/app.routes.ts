@@ -3,7 +3,8 @@ import { Routes } from "@angular/router";
 export const APP_ROUTES: Routes = [
   {
     path: "",
-    loadComponent: () => import("./pages/feed/feed.component").then(m => m.FeedComponent),
+    loadComponent: () => import("./pages/platform/platform.component").then(m => m.PlatformComponent),
+    loadChildren: () => import("./pages/platform/platform.routes").then(m => m.PLATFORM_ROUTES),
   },
   {
     path: "auth",
