@@ -1,0 +1,31 @@
+.main-toolbar {
+  position: relative;
+  z-index: 1000;
+}
+
+.custom-toolbar {
+  position: relative;
+  z-index: 999;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height 0.3s ease, opacity 0.3s ease;
+
+  &.show {
+    height: 90px;
+    opacity: 1;
+  }
+}
+
+.user-menu {
+  min-width: 180px;
+  max-width: 280px;
+
+  mat-divider {
+    margin: 16px 16px;
+  }
+
+  button {
+    border-radius: 0 !important;
+  }
+}

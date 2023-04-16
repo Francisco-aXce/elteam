@@ -1,0 +1,38 @@
+<mat-toolbar class="main-toolbar mat-elevation-z4 justify-content-between" color="primary">
+  <span>ElTeam</span>
+  <ng-container *ngIf="true; else Login">
+    <div>
+      <button mat-icon-button matTooltip="Search" aria-label="Search teams, players or games" (click)="toggleSearch()">
+        <fa-icon [icon]="showSearch ? icons.caretUp : icons.magnifyingGlass"></fa-icon>
+      </button>
+      <button mat-icon-button matTooltip="Francisco Ramos" [matMenuTriggerFor]="userMenu"
+        aria-label="See users actions">
+        <fa-icon [icon]="icons.circleUser"></fa-icon>
+      </button>
+    </div>
+    <mat-menu #userMenu="matMenu">
+      <div class="user-menu">
+        <span mat-menu-item>Francisco Ramos</span>
+        <mat-divider></mat-divider>
+        <button mat-button class="col-12" color="warn">Logout</button>
+      </div>
+    </mat-menu>
+  </ng-container>
+</mat-toolbar>
+
+<mat-toolbar class="custom-toolbar justify-content-center" [ngClass]="{show:showSearch}">
+  <form [formGroup]="searchForm" class="col-12 col-xs-8 col-sm-6">
+    <mat-form-field class="search-input mt-5 col-12" appearance="outline">
+      <input formControlName="search" matInput placeholder="Placeholder">
+      <button mat-icon-button matSuffix><fa-icon [icon]="icons.magnifyingGlass"></fa-icon></button>
+      <mat-error>Try <b>TSM</b> or <b>ImperialHal</b></mat-error>
+    </mat-form-field>
+  </form>
+</mat-toolbar>
+
+<ng-template #Login>
+  <div>
+    <button class="mr-2" mat-button [routerLink]="['/auth', 'signup']">Sign Up</button>
+    <button mat-raised-button color="accent" [routerLink]="['/auth', 'login']">Login</button>
+  </div>
+</ng-template>

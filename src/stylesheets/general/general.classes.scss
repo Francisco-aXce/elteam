@@ -80,7 +80,7 @@ $classes: (
 
 $cols: 12;
 
-@for $i from 1 through $cols {
+@for $i from $cols through 0 {
   @each $breakpoint, $breakpoint-value in $breakpoints {
     @include screen($breakpoint) {
       .col-#{$breakpoint}-#{$i} {
@@ -91,5 +91,54 @@ $cols: 12;
 
   .col-#{$i} {
     width: calc(100% / $cols * $i);
+  }
+}
+
+$margins: 16;
+$multiplier: 0.25rem;
+$marginClasses: (
+  m: (
+    margin,
+  ),
+  mt: (
+    margin-top,
+  ),
+  mr: (
+    margin-right,
+  ),
+  mb: (
+    margin-bottom,
+  ),
+  ml: (
+    margin-left,
+  ),
+  mx: (
+    margin-left,
+    margin-right,
+  ),
+  my: (
+    margin-top,
+    margin-bottom,
+  ),
+);
+
+@each $class, $props in $marginClasses {
+  @for $i from $margins through 0 {
+    $value: $i * $multiplier;
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include screen($breakpoint) {
+        .#{$class}-#{$breakpoint}-#{$i} {
+          @each $prop in $props {
+            #{$prop}: $value !important;
+          }
+        }
+      }
+    }
+
+    .#{$class}-#{$i} {
+      @each $prop in $props {
+        #{$prop}: $value;
+      }
+    }
   }
 }

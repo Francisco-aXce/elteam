@@ -14,4 +14,12 @@
   //   @include angular-material-typography($typography);
   // }
   /* include mixin from component, if desired*/
+
+  .search-input {
+    @include mat.form-field-density(-5);
+    .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
