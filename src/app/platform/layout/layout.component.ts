@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from 'src/app/components/core/navbar/navbar.component';
 
 @Component({
-  selector: 'app-platform',
+  selector: 'app-layout',
   standalone: true,
   imports: [
     CommonModule,
@@ -12,9 +12,9 @@ import { NavbarComponent } from 'src/app/components/core/navbar/navbar.component
 
     NavbarComponent,
   ],
-  templateUrl: './platform.component.html',
-  styleUrls: ['./platform.component.scss']
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss']
 })
-export class PlatformComponent {
+export class LayoutComponent {
 
 }

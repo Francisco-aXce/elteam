@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-auth',
+  selector: 'app-layout',
   standalone: true,
   imports: [
     CommonModule,
@@ -13,9 +13,9 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatIconModule,
   ],
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss']
 })
-export class AuthComponent {
+export class LayoutComponent {
 
 }
